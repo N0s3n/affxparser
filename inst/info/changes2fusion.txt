@@ -1,0 +1,25 @@
+In general, see the patchfile(s) in this directory
+
+CDFFIleData.cpp.pacth
+  Issue: long CDF reference string
+  Fix: change the number 65000 to 400000 in lines 723, 724
+
+There may be issues in that GCC 4.3.1+ has stricter include
+statements: our old notes tells us to #include <stdlib.h> but
+Affy seems to use <cstdlib>, we'll see if it works.
+
+
+- use of atoi()
+ in fusion_sdk/calvin_files/fusion/src/CalvinAdapter/CalvinCELDataAdapter.cpp
+ requires #include <stdlib.h>
+
+- use of wcstombs and mbstowcs
+ in fusion_sdk/calvin_files/utils/src/StringUtils.cpp
+ requires #include <stdlib.h>
+
+- use of EXIT_FAILURE and EXIT_SUCCESS
+ in fusion_sdk/file/BPMAPFileData.cpp
+ requires #include <stdlib.h>
+
+gcc/g++ 4.7:
+More specific about includes. See gcc-4.7.cpp-patch.
